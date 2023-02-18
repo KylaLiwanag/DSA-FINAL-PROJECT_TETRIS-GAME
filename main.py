@@ -173,9 +173,8 @@ def game_intro():
         s_width = 900
         s_height = 700
 
-        message('TETRIS', red, 100, (s_width / 2 - 200), 100)
-        message("It Doesn't Stop Until You Die", white, 50, (s_width / 2 - 300), 200)
-        # button(horizental location ,vertical location,right shift,left shift)
+        message('TETRIS', red, 100, (s_width / 2 - 175), 100)
+        message("WELCOME TO THE WORLD OF TETRIS", white, 50, (s_width / 2 - 370), 250)
         button(100, 400, 70, 30, 'PLAY', white, bright_red, red, 25, 106, 406, gameloop)
         button(600, 400, 70, 30, 'QUIT', white, bright_green, green, 25, 606, 406, quit1)
 
@@ -194,7 +193,7 @@ def next_game():
         s_width = 300
         s_height = 600
 
-        message("WOULD YOU LIKE TO PLAY AGAIN?", yellow, 50, (s_width / 2 - 200), 100)
+        message("WOULD YOU LIKE TO PLAY AGAIN?", yellow, 50, (s_width / 2 - 55), 200)
         button(100, 400, 90, 30, 'PLAY AGAIN', white, bright_red, red, 25, 106, 406, gameloop)
         button(600, 400, 140, 30, 'QUIT', white, bright_green, green, 25, 606, 406, quit1)
 
@@ -312,7 +311,7 @@ def get_shape():
 
 
 def draw_text_middle(surface, text, size, color):
-    font = pygame.font.SysFont("comicsansms", size, bold=True)
+    font = pygame.font.SysFont("candara", size, bold=True)
     label = font.render(text, 3, color)
 
     surface.blit(label, (
@@ -320,14 +319,14 @@ def draw_text_middle(surface, text, size, color):
 
 
 def draw_text_center(surface, text, size, color):
-    font = pygame.font.SysFont("comicsansms", size, bold=True)
+    font = pygame.font.SysFont("candara", size, bold=True)
     label = font.render(text, 3, color)
     surface.blit(label, (
     top_left_x + play_width / 5 - (label.get_width() / 5), top_left_y + play_height / 5 - label.get_height() / 5))
 
 
 def draw_text_corner(surface, text, size, color):
-    font = pygame.font.SysFont("comicsans", size, bold=True)
+    font = pygame.font.SysFont("candara", size, bold=True)
     label = font.render(text, 5, color)
 
     surface.blit(label, (
@@ -369,7 +368,7 @@ def clear_rows(grid, locked):
 
 
 def draw_next_shape(shape, surface):
-    font = pygame.font.SysFont('comicsans', 30)
+    font = pygame.font.SysFont('candara', 30)
     label = font.render('Next Shape', 1, (255, 255, 255))
 
     sx = top_left_x + play_width + 50
@@ -410,14 +409,14 @@ def draw_window(surface, grid, score=0, last_score=0):
 
     pygame.font.init()
 
-    font = pygame.font.SysFont("comicsans", 60, bold=True)
+    font = pygame.font.SysFont("candara", 60, bold=True)
     label = font.render('TETRIS', 1, (white))
 
     surface.blit(label, (top_left_x + play_width / 2 - (label.get_width() / 2), 30))
 
     # current score
 
-    font = pygame.font.SysFont("comicsansms", 30, bold=True)
+    font = pygame.font.SysFont("Helvetica", 30, bold=True)
     label = font.render('Score: ' + str(score), 1, (white))
 
     sx = top_left_x + play_width + 50
@@ -425,7 +424,7 @@ def draw_window(surface, grid, score=0, last_score=0):
 
     surface.blit(label, (sx + 20, sy + 160))
     # last score
-    font = pygame.font.SysFont("comicsansms", 23, bold=True)
+    font = pygame.font.SysFont("Helvetica", 25, bold=True)
     label = font.render('High Score: ' + last_score, 1, (white))
 
     sx = top_left_x - 200
@@ -444,7 +443,7 @@ def draw_window(surface, grid, score=0, last_score=0):
     pygame.display.update()
 
 
-def main(win):  # *
+def main(win):
     last_score = max_score()
     locked_positions = {}
     grid = create_grid(locked_positions)
@@ -524,7 +523,7 @@ def main(win):  # *
         if check_lost(locked_positions):
             pygame.mixer.music.load('gameover.wav')
             pygame.mixer.music.play()
-            draw_text_middle(win, "Try Again", 80, (red))
+            draw_text_middle(win, "Game Over!", 60, (red))
             pygame.display.update()
 
             pygame.time.delay(1500)
@@ -537,7 +536,7 @@ def main(win):  # *
             quit()
 
 
-def main_menu(win):  # *
+def main_menu(win):
     run = True
     while run:
         win.fill((255, 255, 255))
