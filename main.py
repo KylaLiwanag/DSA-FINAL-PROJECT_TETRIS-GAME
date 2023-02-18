@@ -145,6 +145,26 @@ class Piece(object):
         self.rotation = 0  # number from 0-3
 
 
+def game_intro():
+    gameintro = False
+    while gameintro == False:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                gameintro = True
+                game_over = True
+
+        s_width = 900
+        s_height = 700
+
+        message('TETRIS', red, 100, (s_width / 2 - 200), 100)
+        message("It Doesn't Stop Until You Die", white, 50, (s_width / 2 - 300), 200)
+        # button(horizental location ,vertical location,right shift,left shift)
+        button(100, 400, 70, 30, 'GO!', white, bright_red, red, 25, 106, 406, gameloop)
+        button(600, 400, 70, 30, 'QUIT', white, bright_green, green, 25, 606, 406, quit1)
+
+        pygame.display.update()
+
 def create_grid(locked_positions={}):
     grid = [[(0, 0, 0) for x in range(10)] for x in range(20)]
 
