@@ -6,7 +6,7 @@ import random
 shapes: S, Z, I, O, J, L, T
 represented in order by 0 - 6
 """
-
+pygame.init()
 pygame.font.init()
 
 # GLOBALS VARS
@@ -19,6 +19,9 @@ block_size = 30
 top_left_x = (s_width - play_width) // 2
 top_left_y = s_height - play_height
 
+background = pygame.image.load("background.jpg")
+back = pygame.image.load('front_page.jpg')
+try_again = pygame.image.load('try_again.jpg ')
 # SHAPE FORMATS
 
 S = [['.....',
