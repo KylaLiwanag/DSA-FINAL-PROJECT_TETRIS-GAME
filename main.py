@@ -228,6 +228,33 @@ def quit1():
     pygame.quit()
     quit()
 
+
+def gameloop():
+    x = 300
+    y = 400
+    x_change = 0
+    y_change = 0
+    global game_over
+    game_over = False
+
+    while game_over == False:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                game_over = True
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_LEFT:
+                    x_change = -10
+                elif event.key == pygame.K_RIGHT:
+                    x_change = +10
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                    x_change = 0
+
+        x += x_change
+        main(win)
+
+        pygame.display.update()
+
 def create_grid(locked_positions={}):
     grid = [[(0, 0, 0) for x in range(10)] for x in range(20)]
 
