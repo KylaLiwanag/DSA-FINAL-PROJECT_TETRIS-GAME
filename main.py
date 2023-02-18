@@ -316,6 +316,16 @@ def draw_text_middle(text, size, color, surface):
     surface.blit(label, (
     top_left_x + play_width / 2 - (label.get_width() / 2), top_left_y + play_height / 2 - label.get_height() / 2))
 
+def draw_text_center(surface, text, size, color):
+    font = pygame.font.SysFont("comicsansms", size, bold=True)
+    label = font.render(text, 3, color)
+    surface.blit(label, (top_left_x + play_width /5 - (label.get_width()/5), top_left_y + play_height/5 - label.get_height()/5))
+
+def draw_text_corner(surface, text, size, color):
+    font = pygame.font.SysFont("comicsans", size, bold=True)
+    label = font.render(text, 5, color)
+    surface.blit(label, (top_left_x + play_width /2 - (label.get_width()/2), top_left_y + play_height/2 - label.get_height()/2))
+
 
 def draw_grid(surface, row, col):
     sx = top_left_x
