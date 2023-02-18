@@ -237,6 +237,8 @@ def gameloop():
     y_change = 0
     global game_over
     game_over = False
+    music = pygame.mixer.music.load('music.mp3')
+    pygame.mixer.music.play(-1)
 
     while game_over == False:
         for event in pygame.event.get():
@@ -368,8 +370,8 @@ def clear_rows(grid, locked):
 
 
 def draw_next_shape(shape, surface):
-    font = pygame.font.SysFont('candara', 30)
-    label = font.render('Next Shape', 1, (255, 255, 255))
+    font = pygame.font.SysFont("candara", 30, bold=True)
+    label = font.render("Next Shape", 1, (255, 255, 255))
 
     sx = top_left_x + play_width + 50
     sy = top_left_y + play_height / 2 - 100
@@ -417,7 +419,7 @@ def draw_window(surface, grid, score=0, last_score=0):
     # current score
 
     font = pygame.font.SysFont("Helvetica", 30, bold=True)
-    label = font.render('Score: ' + str(score), 1, (white))
+    label = font.render("Score: " + str(score), 1, (white))
 
     sx = top_left_x + play_width + 50
     sy = top_left_y + play_height / 2 - 100
