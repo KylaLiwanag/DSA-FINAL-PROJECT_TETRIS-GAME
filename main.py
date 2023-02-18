@@ -434,7 +434,7 @@ def draw_window(surface, grid, score=0, last_score = 0):
 
 def main():
     global grid
-
+    last_score = max_score()
     locked_positions = {}  # (x,y):(255,0,0)
     grid = create_grid(locked_positions)
 
@@ -444,14 +444,22 @@ def main():
     next_piece = get_shape()
     clock = pygame.time.Clock()
     fall_time = 0
+    fall_speed = 0.27
+    level_time = 0
+    score = 0
 
     while run:
-        fall_speed = 0.27
         grid = create_grid(locked_positions)
         fall_time += clock.get_rawtime()
+        level_time += clock.get_rawtime()
         clock.tick()
 
         # PIECE FALLING CODE
+        if level_time / 1000 > 5:
+            level_time = 0
+            if level_time > 0.12:
+                level_time -= 0.005
+
         if fall_time / 1000 >= fall_speed:
             fall_time = 0
             current_piece.y += 1
