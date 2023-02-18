@@ -200,6 +200,30 @@ def restart():
         pygame.display.update()
 
 
+def message(mess, colour, size, x, y):
+    font = pygame.font.SysFont(None, size)
+    screen_text = font.render(mess, True, colour)
+    win.blit(screen_text, (x, y))
+    pygame.display.update()
+
+
+def button(x, y, w, h, mess, mess_color, actc, noc, size, tx, ty, func):
+    mouse = pygame.mouse.get_pos()
+    click = pygame.mouse.get_pressed()
+    if x + w > mouse[0] > x and y + h > mouse[1] > y:
+
+        pygame.draw.rect(win, actc, [x, y, w, h])
+        message(mess, mess_color, size, tx, ty)
+        pygame.display.update()
+        if click == (1, 0, 0):
+            func()
+
+    else:
+        pygame.draw.rect(win, noc, [x, y, w, h])
+        message(mess, mess_color, size, tx, ty)
+        pygame.display.update()
+    pygame.display.update()
+
 def create_grid(locked_positions={}):
     grid = [[(0, 0, 0) for x in range(10)] for x in range(20)]
 
