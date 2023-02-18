@@ -224,6 +224,10 @@ def button(x, y, w, h, mess, mess_color, actc, noc, size, tx, ty, func):
         pygame.display.update()
     pygame.display.update()
 
+def quit1():
+    pygame.quit()
+    quit()
+
 def create_grid(locked_positions={}):
     grid = [[(0, 0, 0) for x in range(10)] for x in range(20)]
 
